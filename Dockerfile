@@ -1,10 +1,9 @@
-FROM ubuntu:14.04
-MAINTAINER ZhiFeng Hu <hufeng1987@gmail.com>
-RUN apt-get update && \
-	apt-get install -y  libappindicator3-1 && \
-	apt-get install -y wget && \
-	wget https://github.com/getlantern/lantern-binaries/raw/master/lantern-installer-64-bit.deb -O lantern-installer-64-bit.deb && \
-	dpkg -i lantern-installer-64-bit.deb
-EXPOSE 8787
-ENTRYPOINT [ "/usr/bin/lantern", "-headless", "-addr", "0.0.0.0:8787" ]
-#ENTRYPOINT [ "/usr/bin/lantern", "--help" ]
+FROM alpine
+RUN apk update ; \
+        apk add git go;\
+        export GOPATH=/opt/go; \
+        go get -v github.com/cyfdecyf/cow;\
+        mv /opt/go/bin/cow /bin/cow;\
+        apk del openssl ca-certificates libssh2 curl expat pcre git go;\
+        rm -rf /opt/go ;\
+        rm -rf /usr/lib/go;\

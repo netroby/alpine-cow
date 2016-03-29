@@ -1,3 +1,1 @@
-# docker lantern image
-
-Version : 2.1.1
+# docker cow alpine image
