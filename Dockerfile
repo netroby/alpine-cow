@@ -6,4 +6,4 @@ RUN apk update ; \
         mv /opt/go/bin/cow /bin/cow;\
         apk del openssl ca-certificates libssh2 curl expat pcre git go;\
         rm -rf /opt/go ;\
-        rm -rf /usr/lib/go;\
+        rm -rf /usr/lib/go;
